@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+@{
+    var message = "";
+    var total = 0;
+    if (IsPost)
+    {
+        var firstnum = Request["text1"];
+        var secondnum = Request["text2"];
+        total = firstnum.AsInt() + secondnum.AsInt();
+        message = "the total number is" + total;
+    }
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Numbers</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        body {
+            background-color: beige;
+            font-family: Verdana, Arial;
+            margin: 50px;
+        }
+
+        form {
+            padding: 10px;
+            border-style: solid;
+            width: 350px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        enter two whole numbers then click on <strong>ADD</strong>
+    </p>
+    <form action="" method="post">
+        <p><label for="text1"> First number: </label><input type="text" name="text1" /> </p>
+        <p><label for="text2"> Second number: </label><input type="text" name="text2" /> </p>
+        <p> <input type="submit" name="submit" value="ADD"/></p>
+    </form>
+    <p>@message</p>
+</body>
+</html>
